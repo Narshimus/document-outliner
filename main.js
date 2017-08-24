@@ -1,10 +1,12 @@
 let test = require('./sampleData');
 let load = require('./load');
+let insert = require('./add');
 
 let depth = {
   1: '*',
   2: '  +',
-  3: '    -'
+  3: '    -',
+  4: '      ~'
 };
 
 let masterNode = load(test);
@@ -13,32 +15,38 @@ let printTree = function(node){
   if (node.children === []) {
     console.log(`${depth[node.depth]}${node.name}`);
     return;
-  }else {
+  } else {
     console.log(`${depth[node.depth]}${node.name}`);
-    node.children.forEach(function(i){
+    node.children.forEach(function(i) {
       printTree(i);
     });
   }
 };
-
-// printTree(load(test));
-
 let searchTree = function(node, name) {
-  if (node.name === name){
-    console.log("here's the matching node");
-    console.log(node);
+  let match;
+  //check if node name matches string
+  if (node.name === name) {
+    console.log("Here's the matching node");
     return node;
+    //if no match
+  } else {
+    //if no children return undif
+    if (node.children === []) {
+      return;
+    //if children run search tree on child nodes
+    } else {
+      node.children.forEach(function(i) {
+        let search = searchTree(i, name);
+        //check if search is truthy
+        search ? match = search : null;
+      });
+      //return matched node or undif
+      return match;
+    }
   }
-  if (node.children === []) {
-    return;
-  }else {
-    // console.log(`${node.name}`,node.depth);
-    node.children.forEach(function(i){
-      searchTree(i, name);
-    });
-  }
-}
+};
 
+let tree = load(test);
 let string = 'Contrary to popular belief, Lorem Ipsum is not simply random text';
 
 let deleteNode = function(node, name){
@@ -68,5 +76,6 @@ let deleteNode = function(node, name){
   }
 }
 printTree(masterNode);
+insert(searchTree(tree, string),'//////////Inserted string//////////');
 deleteNode(masterNode, 'Lorem Ipsum has been the industry\'s standard dummy');
 printTree(masterNode);
