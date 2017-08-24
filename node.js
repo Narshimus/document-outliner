@@ -4,12 +4,11 @@ let Node = function(name,depth) {
   this.name = name;
   this.children = [];
   this.parent = null;
-  this.depth = 1;
+  this.depth = depth;
 };
 
-Node.prototype.addChild = function(childNode) {
+Node.prototype.addChild = function(childNode, x) {
   childNode.parent = this;
-  childNode.depth =+ JSON.parse(JSON.stringify(childNode.parent.depth));
   this.children.push(childNode);
 };
 
