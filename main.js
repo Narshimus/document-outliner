@@ -1,8 +1,9 @@
-let test = require('./sampleData');
+let fs = require('fs');
 let load = require('./load');
 let insert = require('./add');
 
 let depth = {
+  0: '////////////////////////DOCUMENT OUTLINER////////////////////////',
   1: '*',
   2: '  +',
   3: '    -',
@@ -36,7 +37,7 @@ let searchTree = function(node, name) {
     //if no children return undif
     if (node.children === []) {
       return;
-    //if children run search tree on child nodes
+      //if children run search tree on child nodes
     } else {
       node.children.forEach(function(i) {
         let search = searchTree(i, name);
@@ -49,7 +50,12 @@ let searchTree = function(node, name) {
   }
 };
 
-
+fs.readFile('./sampleData.json', 'utf8', function(err,data) {
+  let tree = load(JSON.parse(data));
+  let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+  insert(searchTree(tree, string), '//////////Inserted string//////////');
+  printTree(tree);
+});
 
 let deleteNode = function(node){
     let parent = node.parent;
@@ -77,8 +83,3 @@ let deleteNode = function(node){
       return null;
     }
 }
-
-printTree(tree);
-insert(searchTree(tree, string),'//////////Inserted string//////////');
-deleteNode(searchTree(tree, 'There are many variations of passages of Lorem Ipsum available'));
-printTree(tree);

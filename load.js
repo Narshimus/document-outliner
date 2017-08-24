@@ -2,7 +2,7 @@
 let Node = require('./node');
 
 let objectToNode = function(object, count) {
-  count = count || 1;
+  count = count || 0;
   if (object.children === []) {
     return new Node(object.name, count);
   }else {
