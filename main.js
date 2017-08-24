@@ -20,3 +20,22 @@ let printTree = function(node){
 };
 
 printTree(load(test));
+
+let searchTree = function(node, name) {
+  if (node.name === name){
+    console.log("here's the matching node");
+    console.log(node);
+    return node;
+  }
+  if (node.children === []) {
+    return;
+  }else {
+    // console.log(`${node.name}`,node.depth);
+    node.children.forEach(function(i){
+      searchTree(i, name);
+    });
+  }
+}
+
+let string = 'Contrary to popular belief, Lorem Ipsum is not simply random text';
+searchTree(load(test), string);
