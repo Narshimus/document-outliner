@@ -9,7 +9,8 @@ let depth = {
   4: '      ~'
 };
 
-let masterNode = load(test);
+let tree = load(test);
+let string = 'Contrary to popular belief, Lorem Ipsum is not simply random text';
 
 let printTree = function(node){
   if (node.children === []) {
@@ -22,6 +23,8 @@ let printTree = function(node){
     });
   }
 };
+
+
 let searchTree = function(node, name) {
   let match;
   //check if node name matches string
@@ -46,22 +49,25 @@ let searchTree = function(node, name) {
   }
 };
 
-let tree = load(test);
-let string = 'Contrary to popular belief, Lorem Ipsum is not simply random text';
+
 
 let deleteNode = function(node, name){
   if (node.name === name){
     let parent = node.parent;
     let children = node.children;
-    for (let t = 0; t < children.length; t++){
-      children[t].parent = parent;
-      children[t].depth = children[t].depth -1;
+    if (children) {
+      for (let t = 0; t < children.length; t++){
+        children[t].parent = parent;
+        children[t].depth = children[t].depth -1;
+      }
     }
-    for (let y = 0; y < children.length; y++){
+    for (let y = 0; y < parent.children.length; y++){
       if (parent.children[y].name === name){
         parent.children.splice(y, 1);
-        for (let x = 0; x < children.length; x++){
-          parent.children.splice(y, 0, children[x]);
+        if (children){
+          for (let x = 0; x < children.length; x++){
+            parent.children.splice(y, 0, children[x]);
+          }
         }
       }
     }
@@ -75,7 +81,8 @@ let deleteNode = function(node, name){
     });
   }
 }
-printTree(masterNode);
+
+printTree(tree);
 insert(searchTree(tree, string),'//////////Inserted string//////////');
-deleteNode(masterNode, 'Lorem Ipsum has been the industry\'s standard dummy');
-printTree(masterNode);
+deleteNode(tree, '//////////Inserted string//////////');
+printTree(tree);
