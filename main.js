@@ -51,38 +51,34 @@ let searchTree = function(node, name) {
 
 
 
-let deleteNode = function(node, name){
-  if (node.name === name){
+let deleteNode = function(node){
     let parent = node.parent;
     let children = node.children;
-    if (children) {
-      for (let t = 0; t < children.length; t++){
-        children[t].parent = parent;
-        children[t].depth = children[t].depth -1;
+    if (parent){
+      if (children) {
+        for (let t = 0; t < children.length; t++){
+          children[t].parent = parent;
+          children[t].depth = children[t].depth -1;
+        }
       }
-    }
-    for (let y = 0; y < parent.children.length; y++){
-      if (parent.children[y].name === name){
-        parent.children.splice(y, 1);
-        if (children){
-          for (let x = 0; x < children.length; x++){
-            parent.children.splice(y, 0, children[x]);
+      for (let y = 0; y < parent.children.length; y++){
+        if (parent.children[y].name === node.name){
+          parent.children.splice(y, 1);
+          if (children){
+            for (let x = 0; x < children.length; x++){
+              parent.children.splice(y, 0, children[x]);
+            }
           }
         }
       }
+      return node;
     }
-    return node;
-  }
-  if (node.children === []) {
-    return;
-  }else {
-    node.children.forEach(function(i){
-      deleteNode(i, name);
-    });
-  }
+    else {
+      return null;
+    }
 }
 
 printTree(tree);
 insert(searchTree(tree, string),'//////////Inserted string//////////');
-deleteNode(tree, '//////////Inserted string//////////');
+deleteNode(searchTree(tree, 'There are many variations of passages of Lorem Ipsum available'));
 printTree(tree);
