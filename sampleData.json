@@ -1,0 +1,31 @@
+{
+  "name": "",
+  "children": [{
+    "name": "Lorem ipsum dolor sit, consectetur adipiscing elit.",
+    "children": [{
+        "name": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        "children": [{
+            "name": "Lorem ipsum dolor sit amet, adipiscing elit.",
+            "children": []
+          },
+          {
+            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Lorem ipsum sit amet, consectetur adipiscing elit.",
+        "children": [{
+            "name": "Lorem dolor sit amet, consectetur adipiscing elit.",
+            "children": []
+          },
+          {
+            "name": "ipsum dolor sit amet, consectetur adipiscing elit.",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }]
+}
