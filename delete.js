@@ -1,6 +1,9 @@
 'Use strict';
 
 let deleteNode = function(node) {
+  if (!node) {
+    return;
+  }
   let parent = node.parent;
   let children = node.children;
   if (parent) {

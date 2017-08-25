@@ -17,8 +17,13 @@ let objectToNode = function(object, count) {
 };
 
 let loadFile = function(filePath){
-  let data = fs.readFileSync(filePath,'utf8');
+  let data;
+  try{
+    data = fs.readFileSync(filePath,'utf8');
     return objectToNode(JSON.parse(data));
+}catch(err){
+  throw err;
+}
 };
 
 module.exports = loadFile;

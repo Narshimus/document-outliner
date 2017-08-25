@@ -32,5 +32,5 @@ let printTree = function(node) {
     let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     // insert(searchTree(tree, string), '//////////Inserted string//////////');
     deleteNode(searchTree(tree, '//////////Inserted string//////////'));
-    save(tree);
-    printTree(tree);
+    // save(tree);
+    // printTree(tree);
