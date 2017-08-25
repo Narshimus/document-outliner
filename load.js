@@ -1,5 +1,6 @@
 'Use strict';
 let Node = require('./node');
+let fs = require('fs');
 
 let objectToNode = function(object, count) {
   count = count || 0;
@@ -15,4 +16,9 @@ let objectToNode = function(object, count) {
   }
 };
 
-module.exports = objectToNode;
+let loadFile = function(filePath){
+  let data = fs.readFileSync(filePath,'utf8');
+    return objectToNode(JSON.parse(data));
+};
+
+module.exports = loadFile;
