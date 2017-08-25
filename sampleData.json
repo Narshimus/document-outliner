@@ -1,31 +1,31 @@
 {
-  "name": "",
+  "name": "DOM",
   "children": [{
     "name": "Lorem ipsum dolor sit, consectetur adipiscing elit.",
     "children": [{
-        "name": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+      "name": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+      "children": [{
+        "name": "Lorem ipsum dolor sit amet, adipiscing elit.",
+        "children": []
+      }, {
+        "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "children": [{
-            "name": "Lorem ipsum dolor sit amet, adipiscing elit.",
-            "children": []
-          },
-          {
-            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "children": []
-          }
-        ]
-      },
-      {
-        "name": "Lorem ipsum sit amet, consectetur adipiscing elit.",
-        "children": [{
-            "name": "Lorem dolor sit amet, consectetur adipiscing elit.",
-            "children": []
-          },
-          {
-            "name": "ipsum dolor sit amet, consectetur adipiscing elit.",
-            "children": []
-          }
-        ]
-      }
-    ]
+          "name": "//////////Inserted string//////////",
+          "children": []
+        }]
+      }]
+    }, {
+      "name": "Lorem ipsum sit amet, consectetur adipiscing elit.",
+      "children": [{
+        "name": "Lorem dolor sit amet, consectetur adipiscing elit.",
+        "children": []
+      }, {
+        "name": "ipsum dolor sit amet, consectetur adipiscing elit.",
+        "children": []
+      }]
+    }]
+  }, {
+    "name": "Lorem ipsum dolor sit, adipiscing elit.",
+    "children": []
   }]
 }
